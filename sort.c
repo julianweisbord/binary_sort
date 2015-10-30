@@ -3,13 +3,16 @@
 #include <stdio.h>
 #include "sort.h"
 
-struct Dlist*init(struct Dlink *new_list){
+struct Dlink*init(struct Dlink *new_list){
   new_list = malloc(sizeof(struct Dlink));
   return new_list;
 }
 
 void print_list(struct Dlink*lst){
   assert(lst!=NULL);
-  strict Dlist *current;
-
+  struct Dlink *current =lst;
+  while(current!=NULL){
+    printf("Node Value: %1f", current->val);
+    current =current->next;
+  }
 }

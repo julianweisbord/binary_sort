@@ -3,6 +3,6 @@
 #include <stdlib.h>
 
 int main(int argc, char**argv){
-  struct Dlink link;
-  link = init(&link);
+  struct Dlink* link = NULL;
+  link = init(link);
 }

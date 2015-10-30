@@ -1,10 +1,10 @@
 #ifndef SORT_H
 #define SORT_H
-#define Type double
+#define TYPE double
 
-struct Dlist{
-  struct list * next;
-  struct list * prev;
+struct Dlink{
+  struct Dlink * next;
+  struct Dlink * prev;
   TYPE val;
 
 };
