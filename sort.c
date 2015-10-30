@@ -34,3 +34,28 @@ void addBeforeLast(struct linkedList *lnkList, TYPE value){
 }
 
 // add binary search
+int binary_search(struct linkedList* lnkList,int low, int high, TYPE value){
+  // want to see if the list contains val, return position of val.
+  int i, mid;
+  i =0;
+  if(low<=high){
+    mid =(low +((high-low)/2)); //divide by 2, will dividing integers be a problem?
+  }
+  struct Dlink * current = lnkList->firstLink->next;
+  while(current!=lnkList->lastLink){
+    if(mid == i){
+      if (current->val == value){
+        return mid;
+      }
+      else if(current->val < value){
+        return binary_search(lnkList,mid+1, high, value);
+      }
+      else if(current->val > value){
+        return binary_search(lnkList,low, mid -1, value);
+      }
+      else return 404; //if not found
+    }
+    ++i;
+    current = current->next;
+  }
+}
