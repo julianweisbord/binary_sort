@@ -33,6 +33,26 @@ void addBeforeLast(struct linkedList *lnkList, TYPE value){
   ++lnkList->size;
 }
 
+void removeList(struct linkedList*lnkList){
+  assert(lnkList!=NULL);
+  struct Dlink * current = lnkList->firstLink->next;
+  struct Dlink * temp;
+
+  while(current !=lnkList->lastLink){
+    current->prev->next =current->next;
+    current->next->prev = current->prev;
+    temp = current;
+    current = current->next;
+    free(temp);
+
+  }
+  lnkList->size =0;
+  free(lnkList->firstLink);
+  free(lnkList->lastLink);
+  free(lnkList);
+
+}
+
 // add binary search
 int binary_search(struct linkedList* lnkList,int low, int high, TYPE value){
   // want to see if the list contains val, return position of val.
@@ -53,7 +73,7 @@ int binary_search(struct linkedList* lnkList,int low, int high, TYPE value){
       else if(current->val > value){
         return binary_search(lnkList,low, mid -1, value);
       }
-      else return 404; //if not found
+      else return -1; //if not found
     }
     ++i;
     current = current->next;

@@ -14,7 +14,8 @@ int main(int argc, char**argv){
   print_list(link);
 
   int position;
-  // see if the list contains 2...
+  // see if the list contains 10...
   position = binary_search(link, 0,link->size,10);
   printf("The position is: %d\n", position);
+  removeList(link);
 }
